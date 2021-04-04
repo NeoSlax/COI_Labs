@@ -5,6 +5,7 @@
 #include <cmath>
 #include "windows.h"
 #include "Lab2.h"
+#include "Lab3.h"
 
 cv::Mat img_start = cv::imread("D:\\COI\\Lab_0\\house_sad.png");
 cv::Mat imageWithBlocks = img_start.clone();
@@ -83,8 +84,8 @@ static void onMouse(int event, int x, int y, int, void*)
 
 int main()
 {
-    Lab2 lab2;
-    lab2.test();
+    Lab3 lab3;
+    lab3.run();
 
     
 }

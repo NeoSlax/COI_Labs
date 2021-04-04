@@ -16,8 +16,8 @@ class Lab2 {
 	
 	
 public:
-	Mat original = imread("D:\\COI\\Lab_0\\bnw.jpg");
-	Mat imageWithBlocks = imread("D:\\COI\\Lab_0\\bnw.jpg");
+	Mat original = imread("D:\\COI\\Lab_0\\house_sad.png");
+	Mat imageWithBlocks = imread("D:\\COI\\Lab_0\\house_sad.png");
 
 	int blockSize = 0;
 	void dctConverter(Mat image);
