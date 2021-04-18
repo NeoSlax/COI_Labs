@@ -1,4 +1,4 @@
-
+п»ї
 #define M_PI           3.14159265358979323846
 
 #include "Lab1.h"
@@ -67,7 +67,7 @@ void Lab2::dctConverter2(Mat imageBlock) {
 	cv::Mat iB = imageBlock.clone();
 	cv::resize(iB, iB, cv::Size(iB.rows * 32, iB.cols * 32), 0, 0, cv::INTER_NEAREST);
 
-	cv::imshow("Выделение блока", iB);
+	cv::imshow("Р’С‹РґРµР»РµРЅРёРµ Р±Р»РѕРєР°", iB);
 
 	cv::Mat cb = cv::Mat::zeros(blocksize, blocksize, CV_8U);
 	for (int i = 0; i < blocksize; i++)
