@@ -1,4 +1,4 @@
-#include "Lab3.h"
+п»ї#include "Lab3.h"
 
 void Lab3::gauss3(const cv::Mat& imgin, cv::Mat& imgout) {
 	imgout = cv::Mat::zeros(imgin.size(), CV_8U);
@@ -58,9 +58,9 @@ void Lab3::run() {
 	gauss3(original, blur);
 	imshow("gaus5", gauss5(original));
 	imshow("gauss3", blur);
-	imshow("Фильтр «Мозаика»", mos3(original));
-	imshow("Фильтр апертурный коррекции", ac3(3, original));
-	imshow("Медианный фильтр", med3(original));
+	imshow("Р¤РёР»СЊС‚СЂ В«РњРѕР·Р°РёРєР°В»", mos3(original));
+	imshow("Р¤РёР»СЊС‚СЂ Р°РїРµСЂС‚СѓСЂРЅС‹Р№ РєРѕСЂСЂРµРєС†РёРё", ac3(3, original));
+	imshow("РњРµРґРёР°РЅРЅС‹Р№ С„РёР»СЊС‚СЂ", med3(original));
 	Canny(original, edgeCanny, 50, 200);
 	imshow("Canny", edgeCanny);
 	imshow("DOG", DOG(original));
@@ -89,8 +89,8 @@ Mat Lab3::gauss5(const cv::Mat& imgin) {
 }
 
 Mat Lab3::ac3(int S, const cv::Mat& imgin) {
-	int X = (100 / S - 1) - 8; // вычисление коэффициента центрального эл-та маски
-	float k = 8 + X; // коэффициент нормировки
+	int X = (100 / S - 1) - 8; // РІС‹С‡РёСЃР»РµРЅРёРµ РєРѕСЌС„С„РёС†РёРµРЅС‚Р° С†РµРЅС‚СЂР°Р»СЊРЅРѕРіРѕ СЌР»-С‚Р° РјР°СЃРєРё
+	float k = 8 + X; // РєРѕСЌС„С„РёС†РёРµРЅС‚ РЅРѕСЂРјРёСЂРѕРІРєРё
 	float Fk[3][3] = { { -1,-1,-1 },{ -1, X,-1 },{ -1,-1,-1 } };
 	Mat imgout = cv::Mat::zeros(imgin.size(), CV_8U);
 	for (int i = 1; i < imgin.cols - 1; i++)
@@ -118,7 +118,7 @@ Mat Lab3::mos3(const cv::Mat& imgin) {
 	Mat imgout = cv::Mat::zeros(imgin.size(), CV_8U);
 	for (int i = 1; i < imgin.cols - 2; i += 3)
 		for (int j = 1; j < imgin.rows - 2; j += 3) {
-			// поиск среднего арифметического значения яркости элементов под маской
+			// РїРѕРёСЃРє СЃСЂРµРґРЅРµРіРѕ Р°СЂРёС„РјРµС‚РёС‡РµСЃРєРѕРіРѕ Р·РЅР°С‡РµРЅРёСЏ СЏСЂРєРѕСЃС‚Рё СЌР»РµРјРµРЅС‚РѕРІ РїРѕРґ РјР°СЃРєРѕР№
 			double avg = 0;
 			for (int ii = 0; ii <= 2; ii++) {
 				for (int jj = 0; jj <= 2; jj++) {
@@ -140,7 +140,7 @@ Mat Lab3::med3(const cv::Mat& imgin) {
 	Mat imgout = cv::Mat::zeros(imgin.size(), CV_8U);
 	for (int i = 1; i < imgin.cols - 1; i++)
 		for (int j = 1; j < imgin.rows - 1; j++) {
-			// поиск среднего арифметического элементов под маской
+			// РїРѕРёСЃРє СЃСЂРµРґРЅРµРіРѕ Р°СЂРёС„РјРµС‚РёС‡РµСЃРєРѕРіРѕ СЌР»РµРјРµРЅС‚РѕРІ РїРѕРґ РјР°СЃРєРѕР№
 			double avg = 0;
 			for (int ii = -1; ii <= 1; ii++) {
 				for (int jj = -1; jj <= 1; jj++) {
@@ -152,7 +152,7 @@ Mat Lab3::med3(const cv::Mat& imgin) {
 			double mindiff = 0;
 			double mindiffcur = 255;
 
-			// поиск элемента с минимальной разницей между значением яркости и среднеарифметическим значением яркости матрицы 3на3
+			// РїРѕРёСЃРє СЌР»РµРјРµРЅС‚Р° СЃ РјРёРЅРёРјР°Р»СЊРЅРѕР№ СЂР°Р·РЅРёС†РµР№ РјРµР¶РґСѓ Р·РЅР°С‡РµРЅРёРµРј СЏСЂРєРѕСЃС‚Рё Рё СЃСЂРµРґРЅРµР°СЂРёС„РјРµС‚РёС‡РµСЃРєРёРј Р·РЅР°С‡РµРЅРёРµРј СЏСЂРєРѕСЃС‚Рё РјР°С‚СЂРёС†С‹ 3РЅР°3
 			for (int ii = -1; ii <= 1; ii++) {
 				for (int jj = -1; jj <= 1; jj++) {
 					mindiff = abs(imgin.at<uchar>(j + jj, i + ii) - avg);
