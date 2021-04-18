@@ -6,13 +6,14 @@
 #include "windows.h"
 #include "Lab2.h"
 #include "Lab3.h"
+#include "Lab4.h"
 
 
 #include <iostream>
 #include <cmath>
 
 int main() {
-	Lab3 lab3;
+	Lab4 lab3;
 	lab3.run();
 
 	return 0;
